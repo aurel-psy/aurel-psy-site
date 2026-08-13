@@ -240,12 +240,32 @@
     display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px;
   }
   .crew-card{
+    display: block;
     background: rgba(255,255,255,0.03); border: 1px solid rgba(177,74,255,0.22); border-radius: 16px;
     padding: 22px 16px; text-align:center; transition: all 0.3s ease; position: relative;
   }
+  .crew-card.link-card{ cursor: pointer; }
+  .crew-card .crew-link{
+    display:block; margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--neon-teal); text-transform: none;
+  }
+  .crew-card.link-card:hover .crew-link{ text-decoration: underline; }
   .crew-card:hover{ transform: translateY(-5px); border-color: var(--neon-teal); box-shadow: 0 10px 26px rgba(34,255,212,0.18); background: rgba(34,255,212,0.04); }
   .crew-card.featured{ border-color: rgba(255,46,224,0.45); background: rgba(255,46,224,0.05); }
   .crew-card.featured:hover{ border-color: var(--neon-magenta); box-shadow: 0 10px 26px rgba(255,46,224,0.25); }
+  .crew-card.boss{
+    border-color: rgba(255,138,61,0.55); background: rgba(255,138,61,0.06);
+    box-shadow: 0 0 22px rgba(255,138,61,0.12);
+  }
+  .crew-card.boss:hover{ border-color: var(--neon-orange); box-shadow: 0 10px 28px rgba(255,138,61,0.3); }
+  .crew-card.boss .crew-avatar{
+    background: linear-gradient(135deg, var(--neon-orange), #ffd23f);
+    box-shadow: 0 0 20px rgba(255,138,61,0.5);
+  }
+  .crew-card.boss p.role{ color: var(--neon-orange); font-weight: 700; }
+  .boss-pin{
+    position: absolute; top: 10px; right: 12px; font-size: 13px;
+  }
   .crew-avatar{
     width: 58px; height: 58px; border-radius: 50%; margin: 0 auto 14px;
     display:flex; align-items:center; justify-content:center;
@@ -264,30 +284,6 @@
     position: absolute; top: 10px; right: 12px; font-size: 10px; font-weight: 800;
     letter-spacing: 0.06em; text-transform: uppercase; color: var(--neon-magenta);
   }
-
-  /* ---------- SHOWS ---------- */
-  .shows{ padding: 20px 0 110px; background: linear-gradient(180deg, var(--bg-void) 0%, #0d0820 50%, var(--bg-void) 100%); }
-  .show-list{ display:flex; flex-direction: column; gap: 14px; }
-  .show-row{
-    display:flex; align-items:center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
-    padding: 20px 26px; border-radius: 16px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(177,74,255,0.2);
-    transition: all 0.25s ease;
-  }
-  .show-row:hover{ border-color: var(--neon-teal); background: rgba(34,255,212,0.04); }
-  .show-date{
-    font-family:'Orbitron',sans-serif; font-weight: 700; font-size: 14px; color: var(--neon-teal);
-    min-width: 130px;
-  }
-  .show-info{ flex: 1; min-width: 200px; }
-  .show-info strong{ display:block; font-size: 17px; color:#fff; }
-  .show-info span{ font-size: 14px; color: var(--text-dim); }
-  .show-artist{
-    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--neon-magenta); background: rgba(255,46,224,0.08); border: 1px solid rgba(255,46,224,0.3);
-    padding: 6px 14px; border-radius: 50px; white-space: nowrap;
-  }
-  .shows-note{ margin-top: 22px; font-size: 13px; color: var(--text-dim); text-align:center; }
 
   /* ---------- STORE ---------- */
   .store{ padding: 20px 0 110px; background: linear-gradient(180deg, var(--bg-void) 0%, #0d0820 50%, var(--bg-void) 100%); }
@@ -448,7 +444,7 @@
         </div>
         <div class="release-info">
           <span class="release-tag">🚀 Out Now · 6th August 2026</span>
-          <h3>Champa – You Take Three (PilotLab Remix)</h3>
+          <h3>Champa <span style="color: var(--neon-orange); font-size: 0.55em; font-weight: 700; letter-spacing: 0.08em; vertical-align: middle;">👑 LABEL BOSS</span> – You Take Three (PilotLab Remix)</h3>
           <div class="release-meta">
             <span>🏷️ Label: Enterrec</span>
             <span>🎼 Cat. No.: ENT106</span>
@@ -470,12 +466,12 @@
       <div class="section-head reveal">
         <span class="section-tag">The Family</span>
         <h2 class="section-title">Meet the <span class="accent">Crew</span></h2>
-        <p class="section-desc" style="margin:0 auto;">Our bookable live acts and DJs — carrying the Enterrec sound to festivals and dancefloors worldwide.</p>
+        <p class="section-desc" style="margin:0 auto;">Led by label boss Champa, our bookable live acts and DJs carry the Enterrec sound to festivals and dancefloors worldwide.</p>
       </div>
 
       <div class="crew-grid reveal">
-        <div class="crew-card"><div class="crew-avatar">CH</div><p class="name">Champa</p><p class="role">Live Act</p><p class="country">England</p></div>
-        <div class="crew-card featured"><span class="crew-pin">★</span><div class="crew-avatar">AU</div><p class="name">Aurel</p><p class="role">Live Act</p><p class="country">Switzerland</p></div>
+        <div class="crew-card boss"><span class="boss-pin">👑</span><div class="crew-avatar">CH</div><p class="name">Champa</p><p class="role">Label Boss · Live Act</p><p class="country">England</p></div>
+        <a class="crew-card featured link-card" href="https://aurel-psy.com" target="_blank" rel="noopener noreferrer" title="Visit aurel-psy.com"><span class="crew-pin">★</span><div class="crew-avatar">AU</div><p class="name">Aurel</p><p class="role">Live Act</p><p class="country">Switzerland</p><span class="crew-link">aurel-psy.com ↗</span></a>
         <div class="crew-card"><div class="crew-avatar">AS</div><p class="name">Ashtetic</p><p class="role">DJ</p><p class="country">England</p></div>
         <div class="crew-card"><div class="crew-avatar">DA</div><p class="name">Djane Anastazja</p><p class="role">DJ</p><p class="country">England</p></div>
         <div class="crew-card"><div class="crew-avatar">CO</div><p class="name">Cougar</p><p class="role">DJ</p><p class="country">Austria</p></div>
@@ -490,51 +486,6 @@
         <div class="crew-card"><div class="crew-avatar">TG</div><p class="name">Toge</p><p class="role">DJ</p><p class="country">Hungary</p></div>
         <div class="crew-card"><div class="crew-avatar">CT</div><p class="name">Captain Terp</p><p class="role">DJ · AU Rep</p><p class="country">Australia</p></div>
       </div>
-    </div>
-  </section>
-
-  <!-- UPCOMING SHOWS -->
-  <section class="shows" id="shows">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="section-tag">On Tour</span>
-        <h2 class="section-title">Upcoming <span class="accent">Shows</span></h2>
-        <p class="section-desc" style="margin:0 auto;">Catch the Enterrec family live at festivals across the globe.</p>
-      </div>
-
-      <div class="show-list reveal">
-        <div class="show-row">
-          <span class="show-date">3 Aug 2026</span>
-          <div class="show-info"><strong>Modem Festival</strong><span>Croatia</span></div>
-          <span class="show-artist">Kryptone</span>
-        </div>
-        <div class="show-row">
-          <span class="show-date">3 Aug 2026</span>
-          <div class="show-info"><strong>Pyramid Festival – Sovra Edition</strong><span>Serbia</span></div>
-          <span class="show-artist">Tropical Bleyage</span>
-        </div>
-        <div class="show-row">
-          <span class="show-date">7 Aug 2026</span>
-          <div class="show-info"><strong>Thump Festival</strong><span>United Kingdom</span></div>
-          <span class="show-artist">Journey Om</span>
-        </div>
-        <div class="show-row">
-          <span class="show-date">20 Aug 2026</span>
-          <div class="show-info"><strong>Digital Forest</strong><span>Czech Republic</span></div>
-          <span class="show-artist">Tropical Bleyage</span>
-        </div>
-        <div class="show-row">
-          <span class="show-date">3 Sep 2026</span>
-          <div class="show-info"><strong>Own Spirit Festival</strong><span>Spain</span></div>
-          <span class="show-artist">Illuzio</span>
-        </div>
-        <div class="show-row">
-          <span class="show-date">27 Dec 2026</span>
-          <div class="show-info"><strong>Universo Paralello</strong><span>Brazil</span></div>
-          <span class="show-artist">Uka Uka</span>
-        </div>
-      </div>
-      <p class="shows-note">Dates &amp; line-ups subject to change — check with each festival for the latest info.</p>
     </div>
   </section>
 
@@ -606,7 +557,7 @@
       <div class="contact-grid reveal">
         <div class="contact-card">
           <h4>🎧 DJ / Artist Booking</h4>
-          <p>Looking to book Champa, Aurel or one of our Crew for your event or festival? Reach out with your event details.</p>
+          <p>Looking to book label boss Champa, Aurel or one of our Crew for your event or festival? Reach out with your event details.</p>
         </div>
         <div class="contact-card">
           <h4>🎵 Music Submission</h4>
